@@ -3,6 +3,9 @@ name: Build JAR
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,8 +31,14 @@ jobs:
       - name: Build with Maven
         run: mvn clean package --no-transfer-progress
 
-      - name: Upload JAR artifact
-        uses: actions/upload-artifact@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: TopServerRewards-${{ steps.version.outputs.VERSION }}
-          path: target/TopServerRewards-${{ steps.version.outputs.VERSION }}.jar
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          name: TopServerRewards v${{ steps.version.outputs.VERSION }}
+          body: |
+            ## TopServerRewards v${{ steps.version.outputs.VERSION }}
+
+            Automatyczny build pluginu TopServerRewards.
+          files: target/TopServerRewards-${{ steps.version.outputs.VERSION }}.jar
+          make_latest: true
