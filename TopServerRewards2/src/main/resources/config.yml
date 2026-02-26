@@ -6,7 +6,7 @@
 api-url: "https://topserver.pl/api_rewards.php"
 
 # ZMIEŃ TO NA IP TWOJEGO SERWERA!
-server-ip: "twoj.serwer.pl"  ← ZMIEŃ TO!
+server-ip: "twoj.serwer.pl"  #<-- ZMIEŃ TO!
 
 # ════════════════════════════════════════════════════════════════
 #  KOMENDY
