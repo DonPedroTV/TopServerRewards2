@@ -11,7 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import org.bstats.bukkit.Metrics;
-import org.bstats.charts.SimplePie;
 
 import pl.topserver.rewards.commands.ReloadCommand;
 import pl.topserver.rewards.commands.TSTabCompleter;
@@ -50,9 +49,7 @@ public class TopServerRewards extends JavaPlugin {
 
         // bStats metrics
         int pluginId = 29789;
-        Metrics metrics = new Metrics(this, pluginId);
-        metrics.addCustomChart(new SimplePie("plugin_version",
-                () -> getDescription().getVersion()));
+        new Metrics(this, pluginId);
 
         reloadCommand = new ReloadCommand(this);
 
